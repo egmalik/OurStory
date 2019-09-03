@@ -164,7 +164,7 @@
         app:srcCompat="@drawable/line" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/ShareTxButton"
         android:layout_width="183dp"
         android:layout_height="94dp"
         android:layout_marginStart="228dp"

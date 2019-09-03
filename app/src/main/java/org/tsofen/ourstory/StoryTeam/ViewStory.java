@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class ViewStory extends AppCompatActivity implements Serializable {
 
     ImageButton ib;
-
+    ImageButton share;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +68,32 @@ public class ViewStory extends AppCompatActivity implements Serializable {
 
         ImageView image3 = findViewById(R.id.imageView6);
         image3.setImageResource(story.getTag_icon3());
-    }
+
+         share=findViewById (R.id.ShareTxButton);
+         share.setOnClickListener(new View.OnClickListener(){
+             @Override
+          public void onClick(View v){
+
+              share_it (v);
+         }
+    });
+}
 
     public void launchSearchActivity(View view) {
         Intent i = new Intent(ViewStory.this, SearchStory.class);
         startActivity(i);
     }
+
+    public void share_it(View view) {
+
+        Intent myIntent = new Intent(Intent.ACTION_SEND);
+        myIntent.setType ("text/plain");
+        String shareBody="the story of: pini cohen";
+        String sharesub="the subject is:";
+        myIntent.putExtra (Intent.EXTRA_SUBJECT,shareBody);
+        myIntent.putExtra (Intent.EXTRA_TEXT,sharesub);
+        startActivity (Intent.createChooser (myIntent,"share using"));
+
+    }
+
 }

@@ -383,17 +383,18 @@
         android:background="#00FFFFFF"
         android:src="@drawable/add_vs"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/ShareTxButton"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageView9"
+        android:id="@+id/ShareTxButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#00FFFFFF"
+        android:onClick="share_it"
         android:src="@drawable/share_vs"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
