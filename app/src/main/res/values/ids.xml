@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="imageView9" type="id">share</item>
+    <item name="imagebutton9" type="id">share</item>
 </resources>
