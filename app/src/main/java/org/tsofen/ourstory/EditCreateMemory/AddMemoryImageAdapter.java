@@ -1,4 +1,4 @@
-package org.tsofen.ourstory;
+package org.tsofen.ourstory.EditCreateMemory;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,22 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.esafirm.imagepicker.features.ImagePicker;
-import com.example.ourstory.R;
+
+import org.tsofen.ourstory.R;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class AddMemoryVideoAdapter extends RecyclerView.Adapter<AddMemoryVideoAdapter.ViewHolder> {
+public class AddMemoryImageAdapter extends RecyclerView.Adapter<AddMemoryImageAdapter.ViewHolder> {
     Context ctx;
     Activity parent;
-    List<String> videos;
+    List<String> images;
 
-    static final int ADDMEMORY_VIDEO = 959;
+    static final int ADDMEMORY_IMAGE = 1;
 
-    public AddMemoryVideoAdapter(Activity parent) {
+    public AddMemoryImageAdapter(Activity parent) {
         super();
-        videos = new LinkedList<>();
+        images = new LinkedList<>();
         this.parent = parent;
     }
 
@@ -52,14 +52,14 @@ public class AddMemoryVideoAdapter extends RecyclerView.Adapter<AddMemoryVideoAd
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                    i.setType("video/*");
+                    i.setType("image/*");
                     i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                     parent.startActivityForResult(Intent.createChooser(i, "Choose Video"),
-                            ADDMEMORY_VIDEO);
+                            ADDMEMORY_IMAGE);
                 }
             });
         } else {
-            String uri = videos.get(position - 1);
+            String uri = images.get(position - 1);
             Glide.with(holder.itemView)
                     .load(uri)
                     .into(imageView);
@@ -68,7 +68,7 @@ public class AddMemoryVideoAdapter extends RecyclerView.Adapter<AddMemoryVideoAd
 
     @Override
     public int getItemCount() {
-        return videos.size() + 1;
+        return images.size() + 1;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

@@ -11,7 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.ourstory.R;
+
+import org.tsofen.ourstory.R;
 
 import java.io.Serializable;
 
@@ -25,10 +26,10 @@ public class ViewStory extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_story);
 
-        LinearLayout linearLayout=findViewById(R.id.linearLayout3);
+        LinearLayout linearLayout = findViewById(R.id.linearLayout3);
         linearLayout.setVisibility(View.INVISIBLE);
 
-        ConstraintLayout constraintLayout=findViewById(R.id.constrainlayout2);
+        ConstraintLayout constraintLayout = findViewById(R.id.constrainlayout2);
         constraintLayout.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
@@ -84,16 +85,15 @@ public class ViewStory extends AppCompatActivity implements Serializable {
         startActivity(i);
     }
 
-    public void launchShare(View view)
-    {
-        share = findViewById(R.id.sharebtn);
+    public void launchShare(View view) {
+//        share = findViewById(R.id.sharebtn);
 
-        Intent myIntent = new Intent(Intent.ACTION_SEND);
-        myIntent.setType("text/plain");
-        String shareBody = "The Story of Pini Cohen";
-        String sharesub = "Your subject here";
-        myIntent.putExtra(Intent.EXTRA_SUBJECT, sharesub);
-        myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(myIntent, "Share using: "));
+//        Intent myIntent = new Intent(Intent.ACTION_SEND);
+//        myIntent.setType("text/plain");
+//        String shareBody = "The Story of Pini Cohen";
+//        String sharesub = "Your subject here";
+//        myIntent.putExtra(Intent.EXTRA_SUBJECT, sharesub);
+//        myIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+//        startActivity(Intent.createChooser(myIntent, "Share using: "));
     }
 }

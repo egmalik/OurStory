@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.ourstory.R;
+import org.tsofen.ourstory.R;
 
 
 public class UserProfile extends Fragment {
@@ -55,7 +55,7 @@ public class UserProfile extends Fragment {
         city.setText(UsersList.usersList.get(userIn).getmCity());
         TextView email = getView().findViewById(R.id.showEmail);
         email.setText(UsersList.usersList.get(userIn).getmEmail());
-         TextView date =getView().findViewById(R.id.showDate);
+        TextView date = getView().findViewById(R.id.showDate);
         date.setText(UsersList.usersList.get(userIn).getmDateOfBirth());
 
 
