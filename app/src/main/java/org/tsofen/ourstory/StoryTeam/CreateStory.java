@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import com.example.ourstory.R;
 import java.io.FileNotFoundException;
@@ -29,6 +32,7 @@ public class CreateStory extends AppCompatActivity implements Serializable {
     Bitmap bitmap;
     String filepathS = null;
     Uri filePath;
+    int errorColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +40,11 @@ public class CreateStory extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_createstory);
     }
 
+
+    // first and last name validation
     private int validateName(EditText edtTxt, String str) {
-        // first and last name validation
+        errorColor = ContextCompat.getColor(getApplicationContext(), R.color.errorColor);
+
         if (str.length() == 0) {
             edtTxt.requestFocus();
             edtTxt.setError("Field cannot be empty!");
@@ -48,6 +55,13 @@ public class CreateStory extends AppCompatActivity implements Serializable {
             return 1;
         }
         return 0;
+
+
+
+//        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
+//        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(errorString);
+//        spannableStringBuilder.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+//        editTextView.setError(spannableStringBuilder);
     }
 
 
@@ -171,7 +185,7 @@ public class CreateStory extends AppCompatActivity implements Serializable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-//
+
 //        int tag1 = R.drawable.family_vs, tag2 = R.drawable.sports_vs, tag3 = R.drawable.vacation_vs;
 //        i.putExtra("tag1", tag1);
 //        i.putExtra("tag2", tag2);
@@ -180,7 +194,7 @@ public class CreateStory extends AppCompatActivity implements Serializable {
 //        i.putExtra("ttag3", ttag3);
 //        i.putExtra("ttag1", ttag1);
 //        i.putExtra("ttag2", ttag2);
-//
+
 //        ImageView iv = findViewById(R.id.profilePic); //pass the profile image
 
         if (f1 == 1 && f2 == 1 && f3 == 1) {
@@ -195,6 +209,5 @@ public class CreateStory extends AppCompatActivity implements Serializable {
 
             startActivity(i);
         }
-
     }
 }

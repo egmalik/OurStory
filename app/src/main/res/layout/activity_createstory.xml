@@ -9,6 +9,7 @@
     android:background="@drawable/background_gradient"
     tools:context="org.tsofen.ourstory.StoryTeam.CreateStory">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_create_story"
         android:layout_width="0dp"
@@ -16,8 +17,10 @@
         android:background="@color/colorPrimary"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/back_button_viewstory2"
             android:layout_width="32dp"
@@ -63,7 +66,6 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"

@@ -45,7 +45,6 @@ public class RegistrationPage1 extends AppCompatActivity {
         TextViewInvs2 = findViewById(R.id.emptyView2);
         TextViewInvs3 = findViewById(R.id.emptyView4);
         TextViewInvs4 = findViewById(R.id.emptyView4);
-
     }
 
     public void Go2RegistrationPage2(View view) {
@@ -153,8 +152,6 @@ public class RegistrationPage1 extends AppCompatActivity {
                     + lastNameString + " " + passwordString);
             startActivity(regIntent2);
         }
-
-
     }
 
 
@@ -166,7 +163,6 @@ public class RegistrationPage1 extends AppCompatActivity {
 
         return nameString.matches("[a-zA-Z]*");
     }
-
 
     private boolean verifyEmail(String email) {
         email = email.trim();
@@ -181,7 +177,4 @@ public class RegistrationPage1 extends AppCompatActivity {
         Intent back = new Intent(this, AppHomePage.class);
         startActivity(back);
     }
-
 }
-
-
