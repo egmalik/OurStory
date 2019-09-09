@@ -1,5 +1,6 @@
 package org.tsofen.ourstory.UserModel;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +28,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import org.tsofen.ourstory.R;
-import org.tsofen.ourstory.StoryTeam.MainActivity;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -66,9 +67,14 @@ public class RegistrationPage2 extends AppCompatActivity {
     private Button chooseButton;
     private ImageView profileImageView;
     private Uri filePath;
+    public static String profileImagePathUriString = null;
+
+    Intent regIntent3;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_page2);
         Intent currIntent = getIntent();
@@ -106,20 +112,27 @@ public class RegistrationPage2 extends AppCompatActivity {
         String month_string = Integer.toString(month + 1);
         String day_string = Integer.toString(day);
         String year_string = Integer.toString(year);
-        String dateString = (month_string +
-                "/" + day_string + "/" + year_string);
-        dateOfBirth = dateString;
-        DateOfB.setText(dateOfBirth);
+        String dateMessage = (month_string + "/" + day_string + "/" + year_string);
+
+
+        TextView year1 = findViewById(R.id.year);
+        year1.setText(year_string);
+        TextView day1 = findViewById(R.id.day);
+        day1.setText(day_string);
+        TextView month1 = findViewById(R.id.month);
+        month1.setText(month_string);
+
+
+
     }
 
 
     public void Go2RegistrationPage3andSave(View view) {
-        Intent regIntent3 = new Intent(this, LogIn.class);
+        regIntent3 = new Intent(this, LogIn.class);
         EditText6 = findViewById(R.id.showState);
         EditText7 = findViewById(R.id.showCity);
         stateString = EditText6.getText().toString();
         cityString = EditText7.getText().toString();
-
 
         regIntent3.putExtra("email", emailString);
         regIntent3.putExtra("first_name", firstNameString);
@@ -129,12 +142,11 @@ public class RegistrationPage2 extends AppCompatActivity {
         regIntent3.putExtra("city", cityString);
         regIntent3.putExtra("dateOfBirth", dateOfBirth);
         regIntent3.putExtra("gender", gender);
-        Log.d("log-saved", "values sent to registrationPage3:"
-                + emailString + " " + firstNameString + " "
-                + lastNameString + " " + passwordString + " "
-                + stateString + " " + cityString + " " + dateOfBirth + " " + gender);
-        uploadImage();
-        startActivity(regIntent3);
+
+        //Uploading the image to Firebase + passing Uri to next activity
+        uploadImage(); ///goes to upload image. Next activity is started from there.
+
+
     }
 
     public void Go2RegistrationPage3andDontSave(View view) {
@@ -204,8 +216,9 @@ public class RegistrationPage2 extends AppCompatActivity {
     }
 
     private void uploadImage() {
+
         if (filePath != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
+            ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
@@ -214,8 +227,25 @@ public class RegistrationPage2 extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                            Log.d("uri log", "the uri is " + downloadUrl.toString());
+                            profileImagePathUriString = downloadUrl.toString();
+                            Log.d("uri log", "the uri string is " + profileImagePathUriString);
                             progressDialog.dismiss();
+
                             Toast.makeText(RegistrationPage2.this, "Uploaded", Toast.LENGTH_SHORT).show();
+
+                            profilePicture = profileImagePathUriString;
+                            Log.d("profileString", "profile string is " + profilePicture);
+                            regIntent3.putExtra("profilePicture", profilePicture);
+
+
+                            Log.d("log-saved", "values sent to registrationPage3:"
+                                    + emailString + " " + firstNameString + " "
+                                    + lastNameString + " " + passwordString + " "
+                                    + stateString + " " + cityString + " " + dateOfBirth + " " + gender + " " + profilePicture);
+                            startActivity(regIntent3);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -233,8 +263,11 @@ public class RegistrationPage2 extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded " + (int) progress + "%");
                         }
                     });
+
         }
-    }
+
+
+    }//end of upload method
 
 
 }
