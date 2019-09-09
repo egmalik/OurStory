@@ -65,9 +65,9 @@ public class CreateStory extends AppCompatActivity implements Serializable {
         firstName = findViewById(R.id.firstNameEditText);
         lastName = findViewById(R.id.lastNameEditText);
 
-        error1=findViewById(R.id.error1);
-        error2=findViewById(R.id.error2);
-        error3=findViewById(R.id.error3);
+//        error1=findViewById(R.id.error1);
+//        error2=findViewById(R.id.error2);
+//        error3=findViewById(R.id.error3);
 
 
 
@@ -283,9 +283,9 @@ public class CreateStory extends AppCompatActivity implements Serializable {
         i.putExtra("ttag1", ttag1);
         i.putExtra("ttag2", ttag2);
         ImageView iv = findViewById(R.id.profilePic); //pass the profile image
-        if (f1 && f2 && f3) {
-            // Send data to next activity / creating local Story object and building a custom made dates
-            String nameofperson = fns + " " + lns ; // name is done
+        if (f1&& f2 && f3 ) {
+                                            // Send data to next activity / creating local Story object and building a custom made dates
+            String nameofperson = fns + " " +lns ; // name is done
             //adapting months and days
             if(Integer.valueOf(m1s)<10){m1s="0"+m1s;}
             if(Integer.valueOf(m2s)<10){m2s="0"+m2s;}
@@ -310,7 +310,7 @@ public class CreateStory extends AppCompatActivity implements Serializable {
                             i.putExtra("Button","just_create");
                         }else{
                             i.putExtra("Button","createandadd");
-                            i.putExtra("id",Long.toString(result.getStoryId()));
+                            i.putExtra("id", result);
 
                         }
                         startActivity(i);

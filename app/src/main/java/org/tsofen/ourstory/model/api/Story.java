@@ -78,6 +78,8 @@ public class Story implements Serializable
     }
 
 
+
+
     public Story(Integer storyId, Owner owner, String nameOfPerson, String dateOfBirth, String dateOfDeath, Object picture) {
         this.storyId = storyId;
         this.owner = owner;
