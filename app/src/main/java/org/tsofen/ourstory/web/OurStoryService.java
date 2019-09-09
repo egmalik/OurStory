@@ -28,8 +28,14 @@ public interface OurStoryService {
     @Headers({"Content-Type: application/json"})
     @POST("stories/create")
     Call<Story> CreateStory(@Body Story story);
+
     @GET("users/findById/{id}")
     Call<Owner> GetUserById(@Path("id") long id);
+
     @GET("stories/findStoriesByKeyword/")
     Call<ArrayList<ListOfStory>> GetStoriesByName(@Query("name") String n);
+
+    @GET("stories/findById/{id}")
+    Call<Story> GetStoryById(@Path("id") long id);
+
 }

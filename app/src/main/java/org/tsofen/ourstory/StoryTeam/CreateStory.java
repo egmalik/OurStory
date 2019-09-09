@@ -226,7 +226,7 @@ public class CreateStory extends AppCompatActivity implements Serializable {
         ImageView iv = findViewById(R.id.profilePic); //pass the profile image
         if (f1 == 1 && f2 == 1 && f3 == 1) {
                                             // Send data to next activity / creating local Story object and building a custom made dates
-            String nameofperson = fns + lns ; // name is done
+            String nameofperson = fns + " " +lns ; // name is done
             //adapting months and days
             if(Integer.valueOf(m1s)<10){m1s="0"+m1s;}
             if(Integer.valueOf(m2s)<10){m2s="0"+m2s;}
