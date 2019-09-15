@@ -27,6 +27,8 @@ public class Story implements Serializable
     @SerializedName("picture")
     @Expose
     private Object picture;
+
+
     private final static long serialVersionUID = -1652510145870620895L;
 
     public long getStoryId() {

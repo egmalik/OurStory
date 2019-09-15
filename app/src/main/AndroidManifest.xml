@@ -22,7 +22,8 @@
             android:label="CreateStory"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".StoryTeam.ViewStory" />
+        <activity android:name=".StoryTeam.ViewStory"/>
+        <activity android:name=".StoryTeam.EditStoryProfile" />
         <activity android:name=".MyMemoriesActivity" />
         <activity android:name=".EditCreateMemory.CreateEditMemoryActivity" />
         <activity android:name=".TeamsHomePage.TeamsHomePg">

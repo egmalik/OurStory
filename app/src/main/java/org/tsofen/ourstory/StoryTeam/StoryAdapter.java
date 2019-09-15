@@ -62,6 +62,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.StoryViewHol
             itemView.setOnClickListener(this);
         }
 
+
         @Override
         public void onClick(View view) {
             int mPosition = getLayoutPosition();
